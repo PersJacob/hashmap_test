@@ -1,0 +1,6 @@
+# Ignore VSCode configuration folder
+.vscode/
+
+# Ignore specific .exe files
+debugout.exe
+test.exe
