@@ -12,6 +12,7 @@ void print_element(const char *key, void *data) {
 	printf("(\"%s\", %s)\n", key, (char*)data);
 }
 
+//this function is odd. nothing gets done with the old value.
 void *resolve_collision(void *old_value, void *new_value) {
 	return new_value;
 }
