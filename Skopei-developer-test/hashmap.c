@@ -56,7 +56,7 @@ void insert_data(HashMap * hm, char * key, void * data, ResolveCollisionCallback
 	// If key not found, insert new bucket at the head of the list
 	Bucket *new_bucket = malloc(sizeof(Bucket));
 	// Copy key string
-	new_bucket->key = strdup(key); 
+	new_bucket->key = strdup_replacement(key); 
 	new_bucket->data = data;
 	// Link to existing list
 	new_bucket->next = hm->buckets[index]; 
@@ -160,4 +160,19 @@ void delete_hashmap(HashMap * hm, DestroyDataCallback destroy_data) {
 	// Free the array of buckets and hashmap structure
 	free(hm->buckets); 
 	free(hm); 
+}
+
+/// @brief Replaces a posix strdup function by duplicating string using dma.
+/// @param string Pointer to the original string to duplicate.
+/// @return A pointer to a newly allocated copy of the string.
+char *strdup_replacement(const char *str) {
+	// Calculate the length of the input string
+    size_t len = strlen(str) + 1;
+	// Allocate memory to hold the copy
+    char *copy_str = malloc(len);
+    if (copy_str) {
+        memcpy(copy_str, str, len);
+    }
+	// Return the pointer to the duplicated string
+    return copy_str;
 }

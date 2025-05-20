@@ -29,3 +29,4 @@ extern void * get_data();
 extern void iterate();
 extern void remove_data();
 extern void delete_hashmap();
+extern char *strdup_replacement(const char *str);
